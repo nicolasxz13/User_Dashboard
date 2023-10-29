@@ -1,0 +1,51 @@
+﻿/* Reset. */
+fieldset {
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    /* restore old fieldset. */
+    border: 2px groove threedface;
+}
+
+legend {
+    display: block;
+    padding-left: 2px;
+    padding-right: 2px;
+    border: none;
+    /* Disable bootstrap legend reboot. */
+    float: initial;
+    width: inherit;
+    padding: 0 10px;
+    margin: 0px;
+}
+
+.textarea {
+    width: 100%;
+}
+
+.editform {
+    display: flex;
+    justify-content: space-between;
+}
+
+h2 {
+    font-weight: 500;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5em;
+}
+.Todashboard{
+    display:flex;
+    justify-content: space-between;
+}
+.btn4blue {
+    background-color: #2b78e4;
+    color:white;
+}

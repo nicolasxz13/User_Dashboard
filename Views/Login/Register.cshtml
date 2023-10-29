@@ -1,0 +1,47 @@
+@using User_Dashboard.Models
+@model User
+
+<div class="userform">
+    <h2>Register</h2>
+    <form asp-action="Create" asp-controller="Login">
+        <div class="block">
+            <label asp-for="Name">First Name:</label>
+            <input asp-for="Name">
+        </div>
+        <div class="block">
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div class="block">
+            <label asp-for="Last_Name">Last Name:</label>
+            <input asp-for="Last_Name">
+        </div>
+        <div class="block">
+            <span asp-validation-for="Last_Name"></span>
+        </div>
+        <div class="block">
+            <label asp-for="Email">Email:</label>
+            <input asp-for="Email">
+        </div>
+        <div class="block">
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="block">
+            <label asp-for="Password">Password:</label>
+            <input asp-for="Password">
+        </div>
+        <div class="block">
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div class="block">
+            <label asp-for="ConfirmPassword">Pw Confirm:</label>
+            <input asp-for="ConfirmPassword">
+        </div>
+        <div class="block">
+            <span asp-validation-for="ConfirmPassword"></span>
+        </div>
+        <div class="block">
+            <button type="submit" class="btn1">Register</button>
+        </div>
+    </form>
+    <a asp-action="Signin" asp-controller="Login">Already have an account? Login</a>
+</div>

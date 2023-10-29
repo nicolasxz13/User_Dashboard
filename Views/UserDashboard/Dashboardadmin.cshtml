@@ -1,0 +1,64 @@
+@using User_Dashboard.Models
+@model List<User>
+<div class="dashboardadmin">
+    <div class="title">
+        <h2>Manage Users</h2>
+        <div>
+            <form asp-action="New" asp-controller="User" method="get">
+                <button type="submit" class="btn1">Add new</button>
+            </form>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name^
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Created_at
+                </th>
+                <th>
+                    User level
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (User userresult in @Model)
+            {
+                <tr>
+                    <td>@userresult.Id</td>
+                    <td>
+                        <a asp-action="Show" asp-controller="User" asp-route-id="@userresult.Id">
+                            @userresult.Name
+                        </a>
+                    </td>
+                    <td>@userresult.Email</td>
+                    <td>@userresult.CreatedAt</td>
+                    <td>@userresult.UserLevel.Name</td>
+                    <td>
+                        <div class="actions">
+                            <a asp-action="EditAdmin" asp-controller="User" asp-route-id="@userresult.Id">Edit</a>
+                            <form asp-action="Delete" asp-controller="User" asp-route-id="@userresult.Id">
+                                <button type="submit" onclick="return confirm('Are you sure ?')" class="deletebutton">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

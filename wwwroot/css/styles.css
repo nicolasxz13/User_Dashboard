@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container_custom {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5em;
+    margin-right: 5em;
+    margin-top: 1em;
+}
+
+span {
+    color: red;
+}
+
+
+.logout {
+    display: flex;
+    justify-content: end;
+}
+
+.btn1 {
+    height: 3.5em;
+    width: 9em;
+    border: 2px solid black;
+    box-shadow: 5px 5px black;
+    background-color: white;
+    color: black;
+}
+
+.btn1:active {
+    /* X, Y, blur, color*/
+    box-shadow: 2px 2px 2px black;
+    transform: translateZ(5px);
+    align-items: center;
+}
+
+.messageFrm,
+.commentform {
+    display: flex;
+    flex-direction: column;
+}
+
+.messageFrm>*,
+.commentform>* {
+    margin-top: 1em;
+}
+
+.messageFrm>label,
+.commentform>label {
+    font-weight: 900;
+    font-size: 1.5em;
+}
+
+.messageFrm button,
+.commentform button {
+    margin-left: auto;
+}
+
+.formdelete {
+    display: flex;
+    justify-content: end;
+}
+
+.commenthead,
+.messagehead {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn3gren {
+    background-color: #009E0F;
+    color: white;
+    margin-left: auto;
+}

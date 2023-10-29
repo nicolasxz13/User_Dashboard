@@ -1,0 +1,77 @@
+﻿@using User_Dashboard.Models
+@model UserAdminViewModel
+<div class="userform">
+    <div class="Todashboard">
+        <h2>Edit User #@Model.InformationAdmin.Id</h2>
+        <form asp-action="Index" asp-controller="UserDashboard">
+            <button class="btn1 btn4blue" type="submit">Return to DashBoard</button>
+        </form>
+    </div>
+    <div class="editform">
+        <form asp-action="UpdateInformationAdmin" asp-controller="User" asp-route-id="@Model.InformationAdmin.Id">
+            <input type="hidden" asp-for="@Model.InformationAdmin.Id" value="@Model.InformationAdmin.Id" />
+            <fieldset>
+                <legend>Edit information</legend>
+                <div class="block">
+                    <label asp-for="@Model.InformationAdmin.Name">First Name:</label>
+                    <input asp-for="@Model.InformationAdmin.Name">
+                </div>
+                <div class="block">
+                    <span asp-validation-for="@Model.InformationAdmin.Name"></span>
+                </div>
+                <div class="block">
+                    <label asp-for="@Model.InformationAdmin.Last_Name">Last Name:</label>
+                    <input asp-for="@Model.InformationAdmin.Last_Name">
+                </div>
+                <div class="block">
+                    <span asp-validation-for="@Model.InformationAdmin.Last_Name"></span>
+                </div>
+                <div class="block">
+                    <label asp-for="@Model.InformationAdmin.Email">Email:</label>
+                    <input asp-for="@Model.InformationAdmin.Email">
+                </div>
+                <div class="block">
+                    <span asp-validation-for="@Model.InformationAdmin.Email"></span>
+                </div>
+                <div class="block">
+                    <label>User Level:</label>
+                    <select asp-for="@Model.InformationAdmin.IdUser_level">
+                        @foreach (var userLevel in @Model.UserLevels)
+                        {
+                            <option value="@userLevel.Id">@userLevel.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="block">
+                    <span asp-validation-for="@Model.InformationAdmin.IdUser_level"></span>
+                </div>
+                <div class="block">
+                    <button type="submit" class="btn1">Save</button>
+                </div>
+            </fieldset>
+        </form>
+        <form asp-action="UpdatePassword" asp-controller="User" asp-route-id="@Model.InformationAdmin.Id" method="post">
+            <fieldset>
+                <legend>Change Password</legend>
+
+                <div class="block">
+                    <label asp-for="@Model.UserPassword.Password">Password:</label>
+                    <input asp-for="@Model.UserPassword.Password">
+                </div>
+                <div class="block">
+                    <span asp-validation-for="@Model.UserPassword.Password"></span>
+                </div>
+                <div class="block">
+                    <label asp-for="@Model.UserPassword.ConfirmPassword">Password Confirmation:</label>
+                    <input asp-for="@Model.UserPassword.ConfirmPassword">
+                </div>
+                <div class="block">
+                    <span asp-validation-for="@Model.UserPassword.ConfirmPassword"></span>
+                </div>
+                <div class="block">
+                    <button type="submit" class="btn1">Updated Password</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

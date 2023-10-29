@@ -1,0 +1,42 @@
+.title {
+    background-color: #DDDDDD;
+    color: #040404;
+    padding: 2em;
+    margin-top: 1em;
+    border: solid #CCCCCC 0.5em;
+}
+
+.title>* {
+    margin-top: 0.5em;
+}
+
+h2 {
+    font-weight: 900;
+}
+
+.blocks {
+    margin-top: 1em;
+    display: flex;
+}
+
+.block :first-child {
+    font-weight: 900;
+}
+
+.btn1 {
+    color: white;
+    font-size: 1.5;
+    font-weight: 900;
+    height: 3.5em;
+    width: 9em;
+    border: 4px solid black;
+    box-shadow: 5px 5px black;
+    background-color: #2b78e4;
+}
+
+.btn1:active {
+    /* X, Y, blur, color*/
+    box-shadow: 2px 2px 2px black;
+    transform: translateZ(5px);
+    align-items: center;
+}

@@ -1,0 +1,76 @@
+@using User_Dashboard.Models
+@model User
+<div class="userform">
+    <div class="Todashboard">
+        <h2>Edit Profile</h2>
+        <form asp-action="Index" asp-controller="UserDashboard">
+            <button class="btn1 btn4blue" type="submit">Return to DashBoard</button>
+        </form>
+    </div>
+    <div class="editform">
+        <form asp-action="UpdateInformation" asp-controller="User" asp-route-id="@Model.Id">
+            <input type="hidden" asp-for="Id" value="@Model.Id" />
+            <fieldset>
+                <legend>Edit information</legend>
+                <div class="block">
+                    <label asp-for="Name">First Name:</label>
+                    <input asp-for="Name">
+                </div>
+                <div class="block">
+                    <span asp-validation-for="Name"></span>
+                </div>
+                <div class="block">
+                    <label asp-for="Last_Name">Last Name:</label>
+                    <input asp-for="Last_Name">
+                </div>
+                <div class="block">
+                    <span asp-validation-for="Last_Name"></span>
+                </div>
+                <div class="block">
+                    <label asp-for="Email">Email:</label>
+                    <input asp-for="Email">
+                </div>
+                <div class="block">
+                    <span asp-validation-for="Email"></span>
+                </div>
+                <div class="block">
+                    <button type="submit" class="btn1 btn3gren">Save</button>
+                </div>
+            </fieldset>
+        </form>
+        <form asp-action="UpdatePassword" asp-controller="User" asp-route-id="@Model.Id" method="post">
+            <fieldset>
+                <legend>Change Password</legend>
+
+                <div class="block">
+                    <label asp-for="Password">Password:</label>
+                    <input asp-for="Password">
+                </div>
+                <div class="block">
+                    <span asp-validation-for="Password"></span>
+                </div>
+                <div class="block">
+                    <label asp-for="ConfirmPassword">Pw Confirm:</label>
+                    <input asp-for="ConfirmPassword">
+                </div>
+                <div class="block">
+                    <span asp-validation-for="ConfirmPassword"></span>
+                </div>
+                <div class="block">
+                    <button type="submit" class="btn1 btn3gren">Save</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <form asp-action="UpdateDescription" asp-controller="User" asp-route-id="@Model.Id">
+        <fieldset>
+            <legend>Edit Description</legend>
+            <div class="block">
+                <textarea asp-for="Description"></textarea>
+            </div>
+            <div class="block">
+                <button type="submit" class="btn1 btn3gren">Save</button>
+            </div>
+        </fieldset>
+    </form>
+</div>

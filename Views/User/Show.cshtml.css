@@ -1,0 +1,44 @@
+.userData {
+    margin-top: 0.5em;
+}
+
+.btn2 {
+    background-color: #009E0F;
+    color: white;
+    margin-left: auto;
+}
+
+.messages {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    font-weight: 900;
+    font-size: 5em;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3em;
+}
+
+.comment {
+    margin-top: 0.5em;
+}
+
+.deletebutton{
+    width: 5em;
+    height: 2em;
+    border-radius: 15%;
+}
+.bordermessage{
+    border: 1px solid black;
+    padding: 1em;
+}

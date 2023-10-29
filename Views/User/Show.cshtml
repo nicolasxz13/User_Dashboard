@@ -1,0 +1,109 @@
+@using User_Dashboard.Models
+@model CommentsMessagesViewModel
+<div>
+    <div class="userData">
+        <h2>@Model.User.Name @Model.User.Last_Name</h2>
+        <p>Registered at: @Model.User.CreatedAt.ToString("MMMM dd ddd yyyy")</p>
+        <p>User ID #@Model.User.Id</p>
+        <p>Email Address @Model.User.Email</p>
+        <p>Description: @Model.User.Description</p>
+    </div>
+    <div class="messageArea">
+        <form asp-action="CreateMessage" asp-controller="User" asp-route-id="@Model.User.Id" class="messageFrm">
+            <label asp-for="@Model.Newmessage.MessageText">Leave a Message for @Model.User.Name</label>
+            <textarea asp-for="@Model.Newmessage.MessageText"></textarea>
+            <span asp-validation-for="@Model.Newmessage.MessageText"></span>
+            <button type="submit" class="btn1 btn2">Post</button>
+        </form>
+    </div>
+
+    @foreach (Message resultmessage in Model.Messages)
+    {
+        <div class="messages">
+            <div class="formdelete">
+                <form asp-action="DeleteMessage" asp-controller="User" asp-route-id="@resultmessage.MessageId"
+                    asp-route-target="@Model.User.Id">
+                    <button type="submit" class="deletebutton">X</button>
+                </form>
+            </div>
+            <div class="messagehead">
+                <p>
+                    <a asp-action="Show" asp-controller="User"
+                        asp-route-id="@resultmessage.UserMessage.Id">@resultmessage.UserMessage.Name
+                        @resultmessage.UserMessage.Last_Name
+                    </a> wrote
+                </p>
+                <p>
+                    @{
+                        TimeSpan leftmessage = DateTime.Now - resultmessage.CreatedAt;
+                        string timeleftMessage;
+                        if(leftmessage.Days> 0)
+                        {
+                            timeleftMessage = leftmessage.Days + " Days ago";
+                        }
+                        else if (leftmessage.Hours > 0)
+                        {
+                            timeleftMessage = leftmessage.Hours + " hours ago";
+                        }
+                        else
+                        {
+                            timeleftMessage = leftmessage.Minutes + " Minutes ago";
+                        }
+                    }
+                    @timeleftMessage
+                </p>
+            </div>
+
+            <p class="text bordermessage">@resultmessage.MessageText</p>
+            <div class="comments">
+                @foreach (Comment resultcomment in resultmessage.Comments)
+                {
+                    <div class="comment">
+                        <div class="formdelete">
+                            <form asp-action="DeleteComment" asp-controller="User" asp-route-id="@resultmessage.MessageId"
+                                asp-route-target="@Model.User.Id" asp-route-commentid="@resultcomment.CommentId">
+                                <button type="submit" class="deletebutton">X</button>
+                            </form>
+                        </div>
+                        <div class="commenthead">
+                            <p>
+                                <a asp-action="Show" asp-controller="User"
+                                    asp-route-id="@resultcomment.UserComment.Id">@resultcomment.UserComment.Name
+                                    @resultcomment.UserComment.Last_Name</a> wrote
+                            </p>
+                            <p>
+                                @{
+                                    TimeSpan Commentleft = DateTime.Now - resultcomment.UserComment.CreatedAt;
+                                    string timeleftcomment;
+                                    if (Commentleft.Days > 0)
+                                    {
+                                        timeleftcomment = leftmessage.Days + " Days ago";
+                                    }
+                                    else if (Commentleft.Hours > 0)
+                                    {
+                                        timeleftcomment = leftmessage.Hours + " hours ago";
+                                    }
+                                    else
+                                    {
+                                        timeleftcomment = Commentleft.Minutes + " Minutes ago";
+                                    }
+                                }
+                                @timeleftcomment
+                            </p>
+                        </div>
+                        <p class="text bordermessage">@resultcomment.CommentText</p>
+                    </div>
+                }
+                <div class="comment">
+                    <form class="commentform" asp-action="CreateComment" asp-controller="User"
+                        asp-route-id="@resultmessage.MessageId" asp-route-target="@Model.User.Id">
+                        <label asp-for="@Model.NewComment.CommentText"></label>
+                        <textarea asp-for="@Model.NewComment.CommentText"></textarea>
+                        <span asp-validation-for="@Model.NewComment.CommentText"></span>
+                        <button type="submit" class="btn1 btn2">Comment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>
